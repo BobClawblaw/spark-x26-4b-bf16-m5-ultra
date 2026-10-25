@@ -36,7 +36,7 @@ name in upper case overrides both (`PORT=8888 HOST=0.0.0.0 python3 -m mac up`).
 
 | setting | default | |
 |---|---|---|
-| `variant` | bf16 | `bf16`: the release, exact. `8bit`: its MLX affine conversion, faster for a measured loss ([8-bit variant](#8-bit-variant)) |
+| `variant` | bf16 | `bf16`: the release, exact; `8bit`: its MLX affine conversion ([8-bit variant](#8-bit-variant)) |
 | `context` | 262144 | a stream's window; the release allows 1,048,576 (`context = 1048576`, `parallel = 1`) |
 | `parallel` | 4 | streams decoded together, each reply equal to its run alone |
 | `max_tokens` | 32768 | a reply's default ceiling; thinking is on by default and counts |
@@ -131,7 +131,7 @@ Each keeps the replies' bits; the numbers are this Mac's (`evidence/`).
 64, made from the downloaded release by the engine's own converter:
 
 ```bash
-python3 -m mac convert                               # ~/models/Spark-X2.6-4B -> ~/models/Spark-X2.6-4B-8bit, 4.07 GiB, 13 s
+python3 -m mac convert           # model_dir -> model_dir_8bit (~/models/Spark-X2.6-4B-8bit), 4.07 GiB, about 13 s
 (cd ~/models/Spark-X2.6-4B-8bit && shasum -a 256 -c PATH_TO_THIS_REPO/checksums/spark-x2.6-4b-8bit.sha256)
 VARIANT=8bit python3 -m mac up
 ```
