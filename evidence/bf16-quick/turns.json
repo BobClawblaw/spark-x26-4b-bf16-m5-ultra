@@ -1,0 +1,102 @@
+{
+ "turn1": {
+  "status": 200,
+  "text": "Three rivers in Europe are:\n\n1. **Danube** \u2013 flows through multiple countries including Germany, Austria, Hungary, and Slovakia.\n2. **Volga** \u2013 flows through Russia and is one of the longest rivers",
+  "ttft": 0.522,
+  "ttft_any": 0.522,
+  "usage": {
+   "prompt_tokens": 5510,
+   "completion_tokens": 48,
+   "total_tokens": 5558,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.976,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn2": {
+  "status": 200,
+  "text": "The **Volga** is the longest of the three rivers mentioned. It is the longest river in Europe, with a length of approximately 3,530 kilometers (2,190 miles).",
+  "ttft": 0.057,
+  "ttft_any": 0.057,
+  "usage": {
+   "prompt_tokens": 5571,
+   "completion_tokens": 43,
+   "total_tokens": 5614,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.465,
+  "finish": "stop",
+  "tool_calls": null
+ },
+ "turn3": {
+  "status": 200,
+  "text": "The **Danube** is the shortest of the three rivers mentioned. It is a river system that flows through multiple countries in Central and Eastern Europe, with a total length of approximately 2,850 kilometers (1,77",
+  "ttft": 0.065,
+  "ttft_any": 0.065,
+  "usage": {
+   "prompt_tokens": 5624,
+   "completion_tokens": 48,
+   "total_tokens": 5672,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.519,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3_again": {
+  "status": 200,
+  "text": "The **Danube** is the shortest of the three rivers mentioned. It is a river system that flows through multiple countries in Central and Eastern Europe, with a total length of approximately 2,850 kilometers (1,77",
+  "ttft": 0.064,
+  "ttft_any": 0.064,
+  "usage": {
+   "prompt_tokens": 5624,
+   "completion_tokens": 48,
+   "total_tokens": 5672,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.518,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3_cold": {
+  "status": 200,
+  "text": "The **Danube** is the shortest of the three rivers mentioned. It is a river system that flows through multiple countries in Central and Eastern Europe, with a total length of approximately 2,850 kilometers (1,77",
+  "ttft": 0.59,
+  "ttft_any": 0.59,
+  "usage": {
+   "prompt_tokens": 5624,
+   "completion_tokens": 48,
+   "total_tokens": 5672,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 1.044,
+  "finish": "length",
+  "tool_calls": null
+ }
+}

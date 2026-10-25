@@ -1,0 +1,38 @@
+# The recipe's defaults. `local.toml` next to this file overrides them for one Mac (copy local.example.toml); an
+# environment variable of the same name in upper case overrides both (PORT=8895 python3 -m mac up).
+
+[model]
+# XHToken's release as published (bf16, 7.7 GiB; nothing is converted):
+# hf download XHToken/Spark-X2.6-4B --revision <model_revision> --local-dir <model_dir>
+model_repo = "XHToken/Spark-X2.6-4B"
+model_revision = "66e3ae7bee54e0a523d692cb8ef841f35409807b"
+served_name = "spark"
+model_dir = "~/models/Spark-X2.6-4B"
+
+[engine]
+# TensorFold's native Metal engine with the spark2_5 family: a worktree of tensorfold_src at tensorfold_sha, built by
+# `python3 -m mac build` under tf_cache; `binary` names a built tensorfold-native instead
+tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/BobClawblaw/TensorFold)
+tensorfold_sha = "483bf254414326b442d67eab7311b9712d46759f"   # branch spark25-metal (stacked on ashhart/TensorFold#1297)
+zig = "zig"                      # Zig 0.17.0
+zig_cpu = "native"
+binary = ""
+
+[local]
+host = "127.0.0.1"
+port = 8895
+tf_cache = "~/.cache/spark-x26-4b"
+
+[serve]
+context = 262144                 # a stream's window (the checkpoint's)
+parallel = 4                     # streams decoded together, each reply equal to its run alone
+max_tokens = 32768               # a reply's default ceiling (thinking is on by default and counts)
+temperature = "1.0"              # generation_config.json's sampling for requests that set none
+top_p = "0.95"
+top_k = "-1"
+prompt_cache_gib = 8             # kept prompt states between turns
+load_limit_gb = 64               # SPARK_LOAD_LIMIT_GB: weights, scratch and every stream's caches (0: 75% of RAM)
+drafts = true                    # the lane engine's copy drafts (replies are identical with them off)
+keep_warm = 86400
+api_key = ""
+extra_args = ""
