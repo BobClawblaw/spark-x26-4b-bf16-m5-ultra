@@ -6,7 +6,7 @@ with reasoning, tool calls, structured output, the prompt cache and several stre
 weights are 7.7 GiB, which fits any Mac the engine runs on, so there was no reason for a lossy quantization.
 
 The engine's `spark2_5` family is in [ashhart/TensorFold#1297](https://github.com/ashhart/TensorFold/pull/1297) (CUDA)
-and its Metal side in the PR stacked on it; until they merge, this recipe builds the pinned commit of the Metal branch
+and its Metal side in [#1320](https://github.com/ashhart/TensorFold/pull/1320), stacked on it; until they merge, this recipe builds the pinned commit of the Metal branch
 (`spark25-metal` on [BobClawblaw/TensorFold](https://github.com/BobClawblaw/TensorFold/tree/spark25-metal)).
 
 ## Quick start
