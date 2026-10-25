@@ -13,7 +13,9 @@ class Settings:
     model_repo: str = ""
     model_revision: str = ""
     served_name: str = ""
+    variant: str = "bf16"
     model_dir: str = ""
+    model_dir_8bit: str = ""
     tensorfold_src: str = ""
     tensorfold_sha: str = ""
     zig: str = "zig"
@@ -41,7 +43,8 @@ class Settings:
 
     @property
     def model(self) -> Path:
-        return self.path(self.model_dir)
+        """The served checkpoint: the release (bf16), or the 8-bit conversion `python3 -m mac convert` writes."""
+        return self.path(self.model_dir_8bit if self.variant == "8bit" else self.model_dir)
 
     @property
     def cache(self) -> Path:
@@ -127,9 +130,11 @@ def validate(s: Settings) -> list[str]:
     out = []
     if not s.binary and not s.tensorfold_sha:
         out.append("no engine: set tensorfold_sha (local.toml) or binary")
-    if not (s.model / "config.json").exists():
-        out.append(f"no checkpoint at {s.model}: hf download {s.model_repo} --revision {s.model_revision} "
-                   f"--local-dir {s.model_dir}")
+    if s.variant not in ("bf16", "8bit"):
+        out.append("variant must be bf16 (the release as published) or 8bit (its MLX affine conversion)")
+    elif not (s.model / "config.json").exists():
+        out.append(f"no checkpoint at {s.model}: hf download {s.model_repo} --revision {s.model_revision} --local-dir {s.model_dir}"
+                   + (" then python3 -m mac convert" if s.variant == "8bit" else ""))
     if s.parallel < 1 or s.parallel > 16:
         out.append("parallel must be 1 to 16")
     if s.context < 1 or s.context > 1048576:

@@ -1,6 +1,8 @@
 # Copy to local.toml (git-ignored) and change what differs on this Mac.
 [model]
 model_dir = "~/models/Spark-X2.6-4B"
+model_dir_8bit = "~/models/Spark-X2.6-4B-8bit"
+# variant = "8bit"
 
 [engine]
 tensorfold_src = "~/github/TensorFold"   # a clone of github.com/BobClawblaw/TensorFold holding tensorfold_sha

@@ -2,6 +2,7 @@
 checkout), and libtfgrammar (structured output and required tool calls) from xgrammar at the tag the engine pins."""
 
 import subprocess
+import sys
 from pathlib import Path
 
 from .config import Settings
@@ -53,6 +54,20 @@ def build_grammar(s: Settings, rebuild: bool = False) -> Path:
     if not s.built_grammar.exists():
         raise SystemExit(f"the build left no {s.built_grammar}")
     return s.built_grammar
+
+
+def convert(s: Settings) -> Path:
+    """The release (model_dir) to MLX affine 8-bit, groups of 64, at model_dir_8bit: the engine's own converter
+    (tools/zig/spark25_convert.py, numpy only) from the pinned worktree, run with this interpreter."""
+    script = s.worktree / "tools" / "zig" / "spark25_convert.py"
+    if not script.exists():
+        raise SystemExit(f"no converter at {script}: python3 -m mac build first")
+    src = s.path(s.model_dir)
+    if not (src / "config.json").exists():
+        raise SystemExit(f"no release at {src}: hf download {s.model_repo} --revision {s.model_revision} --local-dir {s.model_dir}")
+    out = s.path(s.model_dir_8bit)
+    _run([sys.executable, str(script), str(src), str(out), "--bits", "8"])
+    return out
 
 
 def build(s: Settings, rebuild: bool = False) -> None:

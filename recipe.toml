@@ -7,7 +7,11 @@
 model_repo = "XHToken/Spark-X2.6-4B"
 model_revision = "66e3ae7bee54e0a523d692cb8ef841f35409807b"
 served_name = "spark"
+# bf16: the release as published, exact (the default). 8bit: its MLX affine 8-bit conversion (python3 -m mac convert):
+# 166 tokens/s a stream instead of 106, for a mean KL of 0.0021 against the release (README: 8-bit variant)
+variant = "bf16"
 model_dir = "~/models/Spark-X2.6-4B"
+model_dir_8bit = "~/models/Spark-X2.6-4B-8bit"
 
 [engine]
 # TensorFold's native Metal engine with the spark2_5 family: a worktree of tensorfold_src at tensorfold_sha, built by

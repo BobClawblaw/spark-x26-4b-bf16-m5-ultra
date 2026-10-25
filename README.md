@@ -36,6 +36,7 @@ name in upper case overrides both (`PORT=8888 HOST=0.0.0.0 python3 -m mac up`).
 
 | setting | default | |
 |---|---|---|
+| `variant` | bf16 | `bf16`: the release, exact. `8bit`: its MLX affine conversion, faster for a measured loss ([8-bit variant](#8-bit-variant)) |
 | `context` | 262144 | a stream's window; the release allows 1,048,576 (`context = 1048576`, `parallel = 1`) |
 | `parallel` | 4 | streams decoded together, each reply equal to its run alone |
 | `max_tokens` | 32768 | a reply's default ceiling; thinking is on by default and counts |
@@ -110,10 +111,9 @@ Each keeps the replies' bits; the numbers are this Mac's (`evidence/`).
   The weights are read once a round for every stream's row: two streams give 179-190 tokens/s in all, four 296-326
   (12.8 ms a round against 9.6), each reply equal to its run alone; the first token moves from 0.05-0.07 s to
   0.13-0.17 s at four. The engine's row kernel holds up to 32 rows a launch.
-- **Weights.** The release's bf16 is exact and is what this recipe serves. The engine also loads the CUDA page's MLX
-  affine conversions: the 8-bit one decodes at 166 tokens/s (4.1 GiB a step) for a mean KL of 0.0021 against the
-  release and greedy replies that part within a hundred tokens on two of four chats; 4-bit was not measured. Neither
-  is needed on a Mac.
+- **Weights.** The release's bf16 is exact and is the default. `variant = "8bit"` serves an MLX affine 8-bit
+  conversion instead: 167 tokens/s a stream (4.1 GiB a step), 355-370 with four, for a measured loss against the
+  release; the [8-bit variant](#8-bit-variant) section has the numbers. 4-bit was not measured.
 - **Context and memory (`context`, `load_limit_gb`).** 36 KiB a token in the nine full layers plus 270 MiB of rings a
   stream: 64 GB holds four 262,144-token streams or one of 1,048,576. Cold prompts run 9.4k-10.9k tokens/s to 37k
   tokens, 5.0k at 149k and about 1.0k averaged over a million (the full layers' attention grows with the prompt).
@@ -124,6 +124,42 @@ Each keeps the replies' bits; the numbers are this Mac's (`evidence/`).
 - **Thinking.** On by default (the template's); it lengthens replies, not the cost a token; prompt speed with it on is
   within 1% of off.
 - **Not offered.** No int8 or fp8 cache, no fast-math, no reduced-precision sums.
+
+## 8-bit variant
+
+`variant = "8bit"` (in `local.toml`, or `VARIANT=8bit`) serves an MLX affine 8-bit conversion of the release, groups of
+64, made from the downloaded release by the engine's own converter:
+
+```bash
+python3 -m mac convert                               # ~/models/Spark-X2.6-4B -> ~/models/Spark-X2.6-4B-8bit, 4.07 GiB, 13 s
+(cd ~/models/Spark-X2.6-4B-8bit && shasum -a 256 -c PATH_TO_THIS_REPO/checksums/spark-x2.6-4b-8bit.sha256)
+VARIANT=8bit python3 -m mac up
+```
+
+The conversion is deterministic: the shards' hashes in `checksums/` came out the same from numpy 2.5.3 and 2.5.4, and
+the engine serves the folder with the same kernels the CUDA family's checkpoints use.
+
+**What it costs.** It is a lossy conversion of a release that fits every Mac in its own precision, so it is not the
+default. Against the release through HF in fp32 over the same 1,500 positions: mean KL 0.0030 (0.0021 for the
+conversion itself, HF to HF), top-1 97.8% (bf16: 0.00076 and 99.6%); two of the four greedy chats part from the
+release's within a hundred tokens (at tokens 5 and 48), the other two equal it. One-row steps and windows still give
+the same logits bit for bit, and every serving check passes (`evidence/8bit-quick`: structured 18/18, tools 5/5,
+sampling 9/9, turns, soak 60/60, concurrent 12/12, multi-turn 8/8).
+
+**What it gains**, measured on the same engine commit (`evidence/8bit-speed`, `8bit-mlx-speed`, `8bit-prefill`):
+
+| | bf16 (default) | 8-bit |
+|---|---:|---:|
+| decode, 1 stream | 106 tok/s | 167 tok/s |
+| decode, 2 streams, all | 179-190 | 259-272 |
+| decode, 4 streams, all | 296-326 | 355-370 |
+| cold prompt 2.4k / 9.3k / 37k / 149k | 9,438 / 10,940 / 9,058 / 5,002 tok/s | 8,271 / 9,259 / 7,759 / 4,584 |
+| resumed turn, first token | 0.065 s | 0.05 s |
+| 254k needle (depths 0.1 / 0.5 / 0.9) | found, 73-76 s | found, 78-79 s |
+| 1M needle (`context 1048576`, `parallel 1`) | found, 1,035 s | found, 1,050 s |
+
+Decode is faster because a step reads 4.1 GiB instead of 7.7; prompts are a little slower because the tensor-unit
+matmul dequantizes on the way in.
 
 **TensorFold leaderboard.** The board's community-v1 suite was run on `XHToken/Spark-X2.6-4B` with this engine
 (`python3 -m harness leaderboard spark-x26-4b-m5`) and could not be completed, so nothing was published: its `code`
