@@ -125,6 +125,14 @@ Each keeps the replies' bits; the numbers are this Mac's (`evidence/`).
   within 1% of off.
 - **Not offered.** No int8 or fp8 cache, no fast-math, no reduced-precision sums.
 
+**TensorFold leaderboard.** The board's community-v1 suite was run on `XHToken/Spark-X2.6-4B` with this engine
+(`python3 -m harness leaderboard spark-x26-4b-m5`) and could not be completed, so nothing was published: its `code`
+fixture is an instruction sent as raw text, and at temperature 1 the model answers it with an immediate end token on
+about one attempt in four (the release gives that token 22.8% of the first-token mass there, through HF in fp32; here
+the warm-up and one of five repetitions were empty and one more ended at 251 of 256 tokens). The chat cells and the
+greedy code cell complete at 105-106 tokens/s. A cell counts only when every repetition completes, and the run was
+not repeated until one happened to.
+
 **Quality.** No quality suite was run for this recipe (neither thinking off nor `--plan thinking`).
 
 ## Notes
