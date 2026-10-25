@@ -54,7 +54,8 @@ Streams and kept prompts share what `load_limit_gb` leaves; a stream that needs 
 ## What works, and how it was checked
 
 All on one M5 Ultra (256 GB, macOS 27), engine commit cc840195, checkpoint revision 66e3ae7b. The evidence runs name
-the commits as they were when measured (878697c6, 11f15133): the same code before docs-only amends and a rebase onto main, and the pinned
+the commits as they were when measured (878697c6, 11f15133): the same code before docs-only amends and a rebase onto
+main, and the pinned
 build's logits, greedy replies and a served reply's logprobs are byte-identical to theirs.
 
 - **Text, greedy and sampled.** Against Hugging Face's own code (transformers 4.57.1) on the release: 1,500
