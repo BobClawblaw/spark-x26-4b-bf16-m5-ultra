@@ -5,9 +5,11 @@ context, from its bf16 release as published, with TensorFold's native Metal engi
 with reasoning, tool calls, structured output, the prompt cache and several streams. Nothing is converted: the
 weights are 7.7 GiB, which fits any Mac the engine runs on, so there was no reason for a lossy quantization.
 
-The engine's `spark2_5` family is in [ashhart/TensorFold#1297](https://github.com/ashhart/TensorFold/pull/1297) (CUDA)
-and its Metal side in [#1320](https://github.com/ashhart/TensorFold/pull/1320), stacked on it; until they merge, this recipe builds the pinned commit of the Metal branch
-(`spark25-metal` on [BobClawblaw/TensorFold](https://github.com/BobClawblaw/TensorFold/tree/spark25-metal)).
+The engine's `spark2_5` family landed on TensorFold main with
+[ashhart/TensorFold#1297](https://github.com/ashhart/TensorFold/pull/1297) (CUDA); its Metal side is
+[#1320](https://github.com/ashhart/TensorFold/pull/1320). Until that merges, this recipe builds the pinned commit of the
+Metal branch, `spark25-metal` on
+[BobClawblaw/TensorFold](https://github.com/BobClawblaw/TensorFold/tree/spark25-metal).
 
 ## Quick start
 
@@ -51,8 +53,8 @@ Streams and kept prompts share what `load_limit_gb` leaves; a stream that needs 
 
 ## What works, and how it was checked
 
-All on one M5 Ultra (256 GB, macOS 27), engine commit 483bf254, checkpoint revision 66e3ae7b. The evidence runs name
-the commits as they were when measured (878697c6, 11f15133): the same code before docs-only amends, and the pinned
+All on one M5 Ultra (256 GB, macOS 27), engine commit cc840195, checkpoint revision 66e3ae7b. The evidence runs name
+the commits as they were when measured (878697c6, 11f15133): the same code before docs-only amends and a rebase onto main, and the pinned
 build's logits, greedy replies and a served reply's logprobs are byte-identical to theirs.
 
 - **Text, greedy and sampled.** Against Hugging Face's own code (transformers 4.57.1) on the release: 1,500
