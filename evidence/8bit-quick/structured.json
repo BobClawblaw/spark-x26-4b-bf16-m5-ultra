@@ -15,7 +15,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.676,
+  "seconds": 0.716,
   "prompt": "Describe a cat as JSON with a few fields.",
   "request": {
    "max_tokens": 160,
@@ -28,7 +28,7 @@
    "temperature": 0
   },
   "plain_text": "{\n  \"name\": \"Whiskers\",\n  \"species\": \"Felis catus\",\n  \"age\": 3,\n  \"color\": \"Gray\",\n  \"size\": \"Medium\",\n  \"temperament\": \"Independent\",\n  \"preferred_food\": [\"Chicken\", \"Tuna\"],\n  \"owner\": \"Alice\"\n}",
-  "plain_seconds": 0.574,
+  "plain_seconds": 0.583,
   "plain_usage": {
    "prompt_tokens": 26,
    "completion_tokens": 85,
@@ -57,7 +57,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.606,
+  "seconds": 0.625,
   "prompt": "Describe a cat as JSON with a few fields.",
   "request": {
    "max_tokens": 160,
@@ -73,7 +73,7 @@
    "seed": 3
   },
   "plain_text": "{\n  \"name\": \"Whiskers\",\n  \"species\": \"cat\",\n  \"age\": 3,\n  \"color\": \"gray\",\n  \"temperament\": \"affectionate\",\n  \"size\": \"medium\"\n}",
-  "plain_seconds": 0.615,
+  "plain_seconds": 0.632,
   "plain_usage": {
    "prompt_tokens": 26,
    "completion_tokens": 58,
@@ -102,7 +102,7 @@
     "reasoning_tokens": 400
    }
   },
-  "seconds": 2.549,
+  "seconds": 2.585,
   "prompt": "Describe a cat as JSON with a few fields.",
   "request": {
    "max_tokens": 400,
@@ -131,7 +131,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.383,
+  "seconds": 0.388,
   "prompt": "Invent a person.",
   "request": {
    "max_tokens": 160,
@@ -171,7 +171,7 @@
    "temperature": 0
   },
   "plain_text": "{\n  \"name\": \"Lian Chen\",\n  \"age\": 28,\n  \"hobbies\": [\"Astrophysics observation\", \"Handicraft of traditional paper-cutting\", \"Cycling on mountain trails at dawn/dusk\"]\n  }",
-  "plain_seconds": 0.404,
+  "plain_seconds": 0.407,
   "plain_usage": {
    "prompt_tokens": 21,
    "completion_tokens": 59,
@@ -200,7 +200,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.465,
+  "seconds": 0.478,
   "prompt": "Invent a person.",
   "request": {
    "max_tokens": 160,
@@ -243,7 +243,7 @@
    "seed": 3
   },
   "plain_text": "{\n  \"name\": \"Astra Lin\",\n  \"age\": 27,\n  \"hobbies\": [\"Astrophotography\", \"Mycological research\", \"Kinetic sculpture making\"]\n  }",
-  "plain_seconds": 0.488,
+  "plain_seconds": 0.499,
   "plain_usage": {
    "prompt_tokens": 21,
    "completion_tokens": 49,
@@ -272,7 +272,7 @@
     "reasoning_tokens": 400
    }
   },
-  "seconds": 2.544,
+  "seconds": 2.572,
   "prompt": "Invent a person.",
   "request": {
    "max_tokens": 400,
@@ -328,7 +328,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.475,
+  "seconds": 0.483,
   "prompt": "Invent a person who likes the sea.",
   "request": {
    "max_tokens": 160,
@@ -362,7 +362,7 @@
    "temperature": 0
   },
   "plain_text": "{\n  \"name\": \"Lia Ren\",\n  \"age\": 28,\n  \"hobbies\": [\n    \"Sailing small coastal boats on sunny days\",\n    \"Collecting sea-shells and tide-foam artifacts\",\n    \"Writing poetry about the sea's rhythm\"\n  ]\n}",
-  "plain_seconds": 0.495,
+  "plain_seconds": 0.506,
   "plain_usage": {
    "prompt_tokens": 25,
    "completion_tokens": 73,
@@ -391,7 +391,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 1.039,
+  "seconds": 1.073,
   "prompt": "Invent a person who likes the sea.",
   "request": {
    "max_tokens": 160,
@@ -428,7 +428,7 @@
    "seed": 3
   },
   "plain_text": "{\n  \"name\": \"Liraen,\"\n  \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n,\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \"age\": 27,\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \t\n \"hobbies\": [\n \t\"Sea photography\",\n \t\"Building small saltwater aquariums at home\",\n \t\"Listening to marine-themed instrumental music (like soft ocean ambient",
-  "plain_seconds": 1.374,
+  "plain_seconds": 1.4,
   "plain_usage": {
    "prompt_tokens": 25,
    "completion_tokens": 160,
@@ -457,7 +457,7 @@
     "reasoning_tokens": 400
    }
   },
-  "seconds": 2.562,
+  "seconds": 2.586,
   "prompt": "Invent a person who likes the sea.",
   "request": {
    "max_tokens": 400,
@@ -507,7 +507,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.121,
+  "seconds": 0.123,
   "prompt": "Give me a US phone number.",
   "request": {
    "max_tokens": 160,
@@ -518,7 +518,7 @@
    "temperature": 0
   },
   "plain_text": "(800) 555-0199",
-  "plain_seconds": 0.127,
+  "plain_seconds": 0.128,
   "plain_usage": {
    "prompt_tokens": 23,
    "completion_tokens": 15,
@@ -547,7 +547,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.128,
+  "seconds": 0.131,
   "prompt": "Give me a US phone number.",
   "request": {
    "max_tokens": 160,
@@ -561,7 +561,7 @@
    "seed": 3
   },
   "plain_text": "(123) 456-7890",
-  "plain_seconds": 0.134,
+  "plain_seconds": 0.137,
   "plain_usage": {
    "prompt_tokens": 23,
    "completion_tokens": 15,
@@ -590,7 +590,7 @@
     "reasoning_tokens": 307
    }
   },
-  "seconds": 1.968,
+  "seconds": 1.982,
   "prompt": "Give me a US phone number.",
   "request": {
    "max_tokens": 400,
@@ -617,7 +617,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.044,
+  "seconds": 0.047,
   "prompt": "Is the sky green? Answer.",
   "request": {
    "max_tokens": 160,
@@ -632,7 +632,7 @@
    "temperature": 0
   },
   "plain_text": "no",
-  "plain_seconds": 0.044,
+  "plain_seconds": 0.045,
   "plain_usage": {
    "prompt_tokens": 23,
    "completion_tokens": 2,
@@ -661,7 +661,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.044,
+  "seconds": 0.047,
   "prompt": "Is the sky green? Answer.",
   "request": {
    "max_tokens": 160,
@@ -679,7 +679,7 @@
    "seed": 3
   },
   "plain_text": "no",
-  "plain_seconds": 0.044,
+  "plain_seconds": 0.046,
   "plain_usage": {
    "prompt_tokens": 23,
    "completion_tokens": 2,
@@ -708,7 +708,7 @@
     "reasoning_tokens": 400
    }
   },
-  "seconds": 2.547,
+  "seconds": 2.58,
   "prompt": "Is the sky green? Answer.",
   "request": {
    "max_tokens": 400,
@@ -739,7 +739,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.117,
+  "seconds": 0.119,
   "prompt": "Count to five.",
   "request": {
    "max_tokens": 160,
@@ -750,7 +750,7 @@
    "temperature": 0
   },
   "plain_text": "1, 2, 3, 4, 5",
-  "plain_seconds": 0.117,
+  "plain_seconds": 0.119,
   "plain_usage": {
    "prompt_tokens": 20,
    "completion_tokens": 14,
@@ -779,7 +779,7 @@
     "reasoning_tokens": 0
    }
   },
-  "seconds": 0.123,
+  "seconds": 0.128,
   "prompt": "Count to five.",
   "request": {
    "max_tokens": 160,
@@ -793,7 +793,7 @@
    "seed": 3
   },
   "plain_text": "1, 2, 3, 4, 5",
-  "plain_seconds": 0.124,
+  "plain_seconds": 0.127,
   "plain_usage": {
    "prompt_tokens": 20,
    "completion_tokens": 14,
@@ -822,7 +822,7 @@
     "reasoning_tokens": 84
    }
   },
-  "seconds": 0.624,
+  "seconds": 0.637,
   "prompt": "Count to five.",
   "request": {
    "max_tokens": 400,

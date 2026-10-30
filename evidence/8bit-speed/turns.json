@@ -1,0 +1,102 @@
+{
+ "turn1": {
+  "status": 200,
+  "text": "Three rivers in Europe are:\n\n1. **Thames** (in England, United Kingdom)\n2. **Seine** (in France)\n3. **Danube** (flowing through multiple countries in Central Europe",
+  "ttft": 0.606,
+  "ttft_any": 0.606,
+  "usage": {
+   "prompt_tokens": 5510,
+   "completion_tokens": 48,
+   "total_tokens": 5558,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.898,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn2": {
+  "status": 200,
+  "text": "The **Danube** is the longest of the three rivers listed. It is approximately 2,850 kilometers (1,770 miles) long, flowing through multiple countries in Central Europe before emptying into the Black Sea",
+  "ttft": 0.044,
+  "ttft_any": 0.044,
+  "usage": {
+   "prompt_tokens": 5571,
+   "completion_tokens": 48,
+   "total_tokens": 5619,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.338,
+  "finish": "length",
+  "tool_calls": null
+ },
+ "turn3": {
+  "status": 200,
+  "text": "The **Thames** is the shortest of the three rivers listed. It is approximately 345 kilometers (214 miles) long, flowing through England before emptying into the North Sea",
+  "ttft": 0.052,
+  "ttft_any": 0.052,
+  "usage": {
+   "prompt_tokens": 5630,
+   "completion_tokens": 41,
+   "total_tokens": 5671,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.315,
+  "finish": "stop",
+  "tool_calls": null
+ },
+ "turn3_again": {
+  "status": 200,
+  "text": "The **Thames** is the shortest of the three rivers listed. It is approximately 345 kilometers (214 miles) long, flowing through England before emptying into the North Sea",
+  "ttft": 0.049,
+  "ttft_any": 0.049,
+  "usage": {
+   "prompt_tokens": 5630,
+   "completion_tokens": 41,
+   "total_tokens": 5671,
+   "prompt_tokens_details": {
+    "cached_tokens": 5499
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.311,
+  "finish": "stop",
+  "tool_calls": null
+ },
+ "turn3_cold": {
+  "status": 200,
+  "text": "The **Thames** is the shortest of the three rivers listed. It is approximately 345 kilometers (214 miles) long, flowing through England before emptying into the North Sea",
+  "ttft": 0.642,
+  "ttft_any": 0.642,
+  "usage": {
+   "prompt_tokens": 5630,
+   "completion_tokens": 41,
+   "total_tokens": 5671,
+   "prompt_tokens_details": {
+    "cached_tokens": 0
+   },
+   "completion_tokens_details": {
+    "reasoning_tokens": 0
+   }
+  },
+  "s": 0.904,
+  "finish": "stop",
+  "tool_calls": null
+ }
+}

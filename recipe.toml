@@ -16,8 +16,8 @@ model_dir_8bit = "~/models/Spark-X2.6-4B-8bit"
 [engine]
 # TensorFold's native Metal engine with the spark2_5 family: a worktree of tensorfold_src at tensorfold_sha, built by
 # `python3 -m mac build` under tf_cache; `binary` names a built tensorfold-native instead
-tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/BobClawblaw/TensorFold)
-tensorfold_sha = "cc840195e1d2ac992a79c27f164f57efce2fdc71"   # branch spark25-metal (stacked on ashhart/TensorFold#1297)
+tensorfold_src = "~/github/TensorFold"   # a clone holding tensorfold_sha (github.com/ashhart/TensorFold)
+tensorfold_sha = "abf82258548fadd93b9894ee4c01d0dc096755f6"   # main (ashhart/TensorFold), with #1320
 zig = "zig"                      # Zig 0.17.0
 zig_cpu = "native"
 binary = ""

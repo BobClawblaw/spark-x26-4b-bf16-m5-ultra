@@ -12,9 +12,9 @@ XGRAMMAR_TAG = "v0.2.8"
 XGRAMMAR_COMMIT = "97787376faee5ed8466cfad57c99855e4ce2f6aa"
 XGRAMMAR_REPO = "https://github.com/mlc-ai/xgrammar"
 
-# where tensorfold_sha lives until ashhart/TensorFold#1177 merges
-SPARK_REPO = "https://github.com/BobClawblaw/TensorFold"
-SPARK_BRANCH = "spark25-metal"
+# where tensorfold_sha lives
+TENSORFOLD_REPO = "https://github.com/ashhart/TensorFold"
+TENSORFOLD_BRANCH = "main"
 
 
 def _run(cmd: list[str], cwd: Path | None = None) -> None:
@@ -29,8 +29,8 @@ def build_engine(s: Settings, rebuild: bool = False) -> Path:
         raise SystemExit("no tensorfold_sha pinned (local.toml)")
     src = s.path(s.tensorfold_src)
     have = subprocess.run(["git", "-C", str(src), "cat-file", "-e", f"{s.tensorfold_sha}^{{commit}}"], capture_output=True)
-    if have.returncode != 0:  # a clone of upstream TensorFold: the commit is on the fork's branch until it merges
-        _run(["git", "-C", str(src), "fetch", SPARK_REPO, SPARK_BRANCH])
+    if have.returncode != 0:  # a clone older than the pin
+        _run(["git", "-C", str(src), "fetch", TENSORFOLD_REPO, TENSORFOLD_BRANCH])
     if not s.worktree.exists():
         s.worktree.parent.mkdir(parents=True, exist_ok=True)
         _run(["git", "-C", str(src), "worktree", "add", "--detach", str(s.worktree), s.tensorfold_sha])

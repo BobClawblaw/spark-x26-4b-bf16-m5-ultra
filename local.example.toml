@@ -5,7 +5,7 @@ model_dir_8bit = "~/models/Spark-X2.6-4B-8bit"
 # variant = "8bit"
 
 [engine]
-tensorfold_src = "~/github/TensorFold"   # a clone of github.com/BobClawblaw/TensorFold holding tensorfold_sha
+tensorfold_src = "~/github/TensorFold"   # a clone of github.com/ashhart/TensorFold holding tensorfold_sha
 zig = "~/tools/zig-0.17.0/zig"
 
 [local]
